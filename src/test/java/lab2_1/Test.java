@@ -78,9 +78,4 @@ public class Test {
         SearchResult result = search(-1, emptySeq);
     }
 
-    @org.junit.Test(expected = IllegalArgumentException.class)
-    public void LinearSorting() {
-        SearchResult result = search(-1, notLinearSeq);
-    }
-
 }
