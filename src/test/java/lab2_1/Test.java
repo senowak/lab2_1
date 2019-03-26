@@ -13,6 +13,7 @@ public class Test {
     private int singleElement[] = new int[1];
     private int seq[] = new int[100];
     private int emptySeq[] = new int[0];
+    private int notLinearSeq[] = {1, 2, 5, 8, 10};
 
     @Before
     public void initTest() {
@@ -65,9 +66,21 @@ public class Test {
         assertThat(result.getPosition(), is(-1));
     }
 
+    @org.junit.Test
+    public void BinarySearchCheck() {
+        SearchResult result = search(-1, seq);
+        assertThat(result.isFound(), is(false));
+        assertThat(result.getPosition(), is(-1));
+    }
+
     @org.junit.Test(expected = IllegalArgumentException.class)
-    public void isEmptySeq() {
+    public void IsEmptySeq() {
         SearchResult result = search(-1, emptySeq);
+    }
+
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void LinearSorting() {
+        SearchResult result = search(-1, notLinearSeq);
     }
 
 }

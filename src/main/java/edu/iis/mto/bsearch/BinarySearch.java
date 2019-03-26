@@ -29,8 +29,19 @@ public class BinarySearch {
         int start = 0;
         int end = seq.length - 1;
         int center;
+        int i = 2, r, t;
         SearchResult result = new SearchResult();
-
+        if (seq.length < 10 && seq.length > 3) {
+            r = seq[1] - seq[0];
+            do {
+                t = seq[i] - seq[i - 1];
+                if (t != r) {
+                    throw new IllegalArgumentException();
+                }
+                i++;
+            }
+            while (i < seq.length);
+        }
         while (start <= end) {
             center = (start + end) / 2;
             if (seq[center] == key) {
