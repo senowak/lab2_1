@@ -17,4 +17,10 @@ public class Test {
         assertThat(result.getPosition(), is(1));
     }
 
+    @org.junit.Test
+    public void IsNotInSeq() {
+        SearchResult result = search(singleElement.length + 1, singleElement);
+        assertThat(result.isFound(), is(true));
+        assertThat(result.getPosition(), is(-1));
+    }
 }
