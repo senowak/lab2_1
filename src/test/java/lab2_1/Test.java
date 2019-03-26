@@ -12,6 +12,7 @@ public class Test {
 
     private int singleElement[] = new int[1];
     private int seq[] = new int[100];
+    private int emptySeq[] = new int[0];
 
     @Before
     public void initTest() {
@@ -37,31 +38,36 @@ public class Test {
     }
 
     @org.junit.Test
-    public void IsFirstEleInSeq() {
+    public void IsFirstElementInSeq() {
         SearchResult result = search(seq[0], seq);
         assertThat(result.isFound(), is(true));
         assertThat(result.getPosition(), is(1));
     }
 
     @org.junit.Test
-    public void IsLastEleInSeq() {
+    public void IsLastElementInSeq() {
         SearchResult result = search(seq[seq.length - 1], seq);
         assertThat(result.isFound(), is(true));
         assertThat(result.getPosition(), is(seq.length));
     }
 
     @org.junit.Test
-    public void IsMiddleEleInSeq() {
+    public void IsMiddleElementInSeq() {
         SearchResult result = search(seq[seq.length / 2 - 1], seq);
         assertThat(result.isFound(), is(true));
         assertThat(result.getPosition(), is(seq.length / 2));
     }
 
     @org.junit.Test
-    public void IsNotEleInSeq() {
+    public void IsNotElementInSeq() {
         SearchResult result = search(-1, seq);
         assertThat(result.isFound(), is(false));
         assertThat(result.getPosition(), is(-1));
+    }
+
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void isEmptySeq() {
+        SearchResult result = search(-1, emptySeq);
     }
 
 }
